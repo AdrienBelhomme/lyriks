@@ -2,10 +2,10 @@
 import { styled } from '@mui/material/styles';
 import { IconButton, Paper } from '@mui/material';
 import { Favorite, PlayCircleOutline, Chat } from '@mui/icons-material';
-
-import './CardMusic.css';
 import { useDispatch } from 'react-redux';
 import { Link } from 'react-router-dom';
+
+import './CardMusic.css';
 import { setActiveSong, setArtistAndSongAndImage, setDataAndIndex } from '../features/playerSlice';
 
 const Item = styled(Paper)(({ theme }) => ({
@@ -28,6 +28,8 @@ const CardMusic = (props) => {
   const dispatchArtistAndSongAndImage = (i) => {
     dispatch(setArtistAndSongAndImage({ artist: data[i].title, song: data[i].subtitle, image: data[i].images.coverart, alt: data[i].title }));
   };
+
+  console.log(data);
 
   return (
     <div className="card">
@@ -71,7 +73,10 @@ const CardMusic = (props) => {
             <h3 style={{ textAlign: 'left', color: '#2E3271', fontWeight: '600', fontSize: '16px', margin: '0',
             }}
             >
-              {data[index].title}
+              <Link to={`../SongDetails/${data[index].key}`}>
+                {data[index].title}
+              </Link>
+
             </h3>
             <h4 style={{ margin: 0, textAlign: 'left', color: 'rgba(124, 141, 181, 0.75)', fontSize: '14px', fontWeight: '400' }}>
 

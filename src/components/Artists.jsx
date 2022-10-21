@@ -11,7 +11,9 @@ const Artists = () => {
   const { id } = useParams();
   const navigate = useNavigate();
 
-  const { data: artistData, isFetching: isFetchingArtistDetails, error } = id === ':id' ? useGetArtistDetailsQuery(95705522) : useGetArtistDetailsQuery(id);
+  console.log(id);
+
+  const { data: artistData, isFetching: isFetchingArtistDetails, error } = id === ':id' || undefined ? useGetArtistDetailsQuery(95705522) : useGetArtistDetailsQuery(id);
 
   if (isFetchingArtistDetails) {
     return (
